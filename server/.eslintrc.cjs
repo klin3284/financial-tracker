@@ -52,7 +52,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/controllers/*.ts'],
+      files: ['src/controllers/**/*.ts'],
       rules: {
         'import/prefer-default-export': 0,
       },
