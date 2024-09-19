@@ -3,12 +3,21 @@ import { ValidateError } from 'tsoa';
 import fs from 'fs/promises';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
-import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import InvalidParametersError from './lib/invalidParameters';
 import { RegisterRoutes } from '../generated/routes';
+import TransactionDAO from './dao/transactionDao';
+import UsersDao from './dao/usersDao';
+import TransactionService from './services/transactionService';
+import UserService from './services/userService';
 
 dotenv.config();
+
+const userDao = new UsersDao();
+const transactionDao = new TransactionDAO();
+
+UserService.initializeService(userDao);
+TransactionService.initializeService(transactionDao, userDao);
 
 const app = express();
 const PORT = 3000;

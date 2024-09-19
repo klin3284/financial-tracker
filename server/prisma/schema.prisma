@@ -15,47 +15,58 @@ datasource db {
 }
 
 model User {
-  id           String         @id @default(cuid())
-  email        String         @unique
-  firstName    String?
-  lastName     String?
-  imageUrl     String?
-  clerkUserId  String?        @unique
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  Transaction  Transaction[]
-  Budget       Budget[]
-  Subscription Subscription[]
+  id               String            @id @default(cuid())
+  email            String            @unique
+  firstName        String?
+  lastName         String?
+  imageUrl         String?
+  clerkUserId      String?           @unique
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  Transaction      Transaction[]
+  Subscription     Subscription[]
+  FinancialProfile FinancialProfile?
+}
+
+model FinancialProfile {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id])
+  monthlySalary     Float
+  needsPercentage   Float    @default(50)
+  wantsPercentage   Float    @default(30)
+  savingsPercentage Float    @default(20)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
 
 model Transaction {
   id          String          @id @default(uuid())
   amount      Float
   description String?
-  date        DateTime
-  category    String?
-  type        TransactionType
+  date        DateTime        @default(now())
+  tag         Tag             @default(OTHER)
+  type        TransactionType @default(EXPENSE)
   userId      String
   user        User            @relation(fields: [userId], references: [id])
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt
 }
 
+enum Tag {
+  FOOD
+  TRANSPORTATION
+  SHOPPING
+  ENTERTAINMENT
+  BILLS
+  HEALTH
+  TRAVEL
+  OTHER
+}
+
 enum TransactionType {
   INCOME
   EXPENSE
-}
-
-model Budget {
-  id        String   @id @default(uuid())
-  name      String
-  amount    Float
-  startDate DateTime
-  endDate   DateTime
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 enum SubscriptionFrequency {

@@ -3,11 +3,13 @@ import { WebhookEvent } from '@clerk/nextjs/server';
 import { Controller, Post, Route, Body, Header, Tags } from 'tsoa';
 import { User } from '@prisma/client';
 import InvalidParametersError from '../lib/invalidParameters';
-import { createUser, updateUser, deleteUser } from '../dao/users';
+import UserService from '../services/userService';
 
 @Route('webhooks')
 @Tags('webhooks')
 export class WebhookController extends Controller {
+  private _userService: UserService = UserService.getInstance();
+
   @Post('/clerk')
   public async clerkUsers(
     @Body() payload: unknown,
@@ -52,7 +54,7 @@ export class WebhookController extends Controller {
         ...(last_name ? { lastName: last_name } : {}),
         ...(image_url ? { imageUrl: image_url } : {}),
       };
-      await createUser(user as User);
+      await this._userService.createUser(user as User);
     } else if (evt.type === 'user.updated') {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       const { id, email_addresses, first_name, last_name, image_url } = evt.data;
@@ -68,7 +70,7 @@ export class WebhookController extends Controller {
         ...(last_name ? { lastName: last_name } : {}),
         ...(image_url ? { imageUrl: image_url } : {}),
       };
-      await updateUser(id, user as User);
+      await this._userService.updateUser(id, user as User);
     } else if (evt.type === 'user.deleted') {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       const { id } = evt.data;
@@ -76,7 +78,7 @@ export class WebhookController extends Controller {
         throw new InvalidParametersError('Missing user parameters');
       }
 
-      await deleteUser(id);
+      await this._userService.deleteUser(id);
     } else {
       throw new Error('Invalid Clerk webhook event type');
     }
