@@ -15,29 +15,30 @@ datasource db {
 }
 
 model User {
-  id               String            @id @default(cuid())
-  email            String            @unique
-  firstName        String?
-  lastName         String?
-  imageUrl         String?
-  clerkUserId      String?           @unique
-  createdAt        DateTime          @default(now())
-  updatedAt        DateTime          @updatedAt
-  Transaction      Transaction[]
-  Subscription     Subscription[]
-  FinancialProfile FinancialProfile?
+  id           String         @id @default(cuid())
+  email        String         @unique
+  firstName    String?
+  lastName     String?
+  imageUrl     String?
+  clerkUserId  String?        @unique
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Transaction  Transaction[]
+  Subscription Subscription[]
+  Budget       Budget?
 }
 
-model FinancialProfile {
-  id                String   @id @default(uuid())
-  userId            String   @unique
-  user              User     @relation(fields: [userId], references: [id])
+model Budget {
+  id                String      @id @default(uuid())
+  userId            String      @unique
+  user              User        @relation(fields: [userId], references: [id])
   monthlySalary     Float
-  needsPercentage   Float    @default(50)
-  wantsPercentage   Float    @default(30)
-  savingsPercentage Float    @default(20)
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
+  needsPercentage   Float       @default(50)
+  wantsPercentage   Float       @default(30)
+  savingsPercentage Float       @default(20)
+  currency          String      @default("USD")
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
 }
 
 model Transaction {

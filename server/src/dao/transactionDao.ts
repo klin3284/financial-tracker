@@ -1,6 +1,10 @@
 import { Transaction, TransactionType, Tag } from '@prisma/client';
 import prisma from '../lib/prisma';
-import { CreateTransactionRequest, TransactionByDateRequest } from '../model/transaction';
+import {
+  CreateTransactionRequest,
+  TransactionByDateRequest,
+  UpdateTransactionRequest,
+} from '../model/transaction';
 
 export default class TransactionDAO {
   public async createTransaction(data: CreateTransactionRequest): Promise<Transaction> {
@@ -55,7 +59,8 @@ export default class TransactionDAO {
     return transactions;
   }
 
-  public async updateTransaction(id: string, data: Partial<Transaction>): Promise<Transaction> {
+  public async updateTransaction(request: UpdateTransactionRequest): Promise<Transaction> {
+    const { id, data } = request;
     const updatedTransaction = await prisma.transaction.update({ where: { id }, data });
     return updatedTransaction;
   }

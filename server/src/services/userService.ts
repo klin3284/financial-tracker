@@ -15,9 +15,9 @@ export default class UserService {
   }
 
   /**
-   * Retrieve the singleton CommentService.
+   * Retrieve the singleton UserService.
    *
-   * There is only a single instance of the CommentService - it follows the singleton pattern
+   * There is only a single instance of the UserService - it follows the singleton pattern
    */
   static getInstance(): UserService {
     if (UserService._instance === undefined) {
@@ -38,6 +38,9 @@ export default class UserService {
   }
 
   public async getUserById(id?: string, clerkUserId?: string): Promise<User | null> {
+    if (!id && !clerkUserId) {
+      throw new Error('id or userId is required to get user');
+    }
     return this._userDao.getUserById(id, clerkUserId);
   }
 

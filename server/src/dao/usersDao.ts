@@ -13,9 +13,6 @@ export default class UsersDao {
   }
 
   public async getUserById(id?: string, clerkUserId?: string): Promise<User | null> {
-    if (!id && !clerkUserId) {
-      throw new Error('id or clerkUserId is required');
-    }
     const query = id ? { id } : { clerkUserId };
 
     const user = await prisma.user.findUnique({ where: query });

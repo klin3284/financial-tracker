@@ -24,9 +24,9 @@ export default class TransactionService {
   }
 
   /**
-   * Retrieve the singleton CommentService.
+   * Retrieve the singleton TransactionService.
    *
-   * There is only a single instance of the CommentService - it follows the singleton pattern
+   * There is only a single instance of the TransactionService - it follows the singleton pattern
    */
   static getInstance(): TransactionService {
     if (TransactionService._instance === undefined) {
@@ -75,12 +75,23 @@ export default class TransactionService {
   }
 
   public async deleteTransaction(id: string): Promise<void> {
+    if (id) {
+      const transaction = await this.getTransactionById(id);
+      if (!transaction) {
+        throw new Error('Transaction not found for this deletion');
+      }
+    }
     await this._transactionDao.deleteTransaction(id);
   }
 
   public async updateTransaction(req: UpdateTransactionRequest): Promise<Transaction> {
-    const { id, data } = req;
-    const updatedTransaction = await this._transactionDao.updateTransaction(id, data);
+    if (req.id) {
+      const transaction = await this.getTransactionById(req.id);
+      if (!transaction) {
+        throw new Error('Transaction not found for this update');
+      }
+    }
+    const updatedTransaction = await this._transactionDao.updateTransaction(req);
     return updatedTransaction;
   }
 }

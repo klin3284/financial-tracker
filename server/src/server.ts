@@ -8,16 +8,20 @@ import InvalidParametersError from './lib/invalidParameters';
 import { RegisterRoutes } from '../generated/routes';
 import TransactionDAO from './dao/transactionDao';
 import UsersDao from './dao/usersDao';
+import BudgetDao from './dao/budgetDao';
 import TransactionService from './services/transactionService';
 import UserService from './services/userService';
+import BudgetService from './services/budgetService';
 
 dotenv.config();
 
 const userDao = new UsersDao();
 const transactionDao = new TransactionDAO();
+const budgetDao = new BudgetDao();
 
 UserService.initializeService(userDao);
 TransactionService.initializeService(transactionDao, userDao);
+BudgetService.initializeService(budgetDao, userDao);
 
 const app = express();
 const PORT = 3000;
