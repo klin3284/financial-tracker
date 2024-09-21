@@ -20,18 +20,16 @@ module.exports = {
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
     'no-restricted-syntax': 0,
-    'no-plusplus': 0,
-    'class-methods-use-this': 0,
-    '@typescript-eslint/no-unused-vars': [1, { args: 'none' }],
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: ['**/*.test.ts', '**/TestUtils.ts'] },
-    ],
     '@typescript-eslint/naming-convention': [
       'error',
       {
         selector: 'variable',
         format: ['camelCase'],
+      },
+      {
+        selector: 'variable',
+        types: ['function'],
+        format: ['camelCase', 'PascalCase'],
       },
       {
         selector: 'typeLike',
@@ -53,7 +51,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/app/api/**/*.ts'],
+      files: ['src/app/api/**/*.ts', 'src/components/ui/**/*.tsx'],
       rules: {
         'import/prefer-default-export': 0,
       },
