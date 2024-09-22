@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { LineChart, PiggyBank, Wallet, Lock, Target } from 'lucide-react';
+import { LineChart, PiggyBank, Wallet, Lock, Target, ArrowRight } from 'lucide-react';
 import { Button } from '@components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { motion } from 'framer-motion';
@@ -23,40 +23,42 @@ const cardVariants = {
 export default function Home() {
   return (
     <div className='flex min-h-screen flex-col'>
-      <header className='flex h-16 items-center justify-between border-b px-4 md:px-6'>
-        <div className='flex items-center gap-2 font-semibold'>Fitness Tracker</div>
-        <nav className='ml-auto flex gap-4 sm:gap-6'>
-          <Link className='text-sm font-medium hover:underline underline-offset-4' href='#features'>
-            Features
-          </Link>
-          <Link className='text-sm font-medium hover:underline underline-offset-4' href='#about'>
-            About
-          </Link>
-          <Link className='text-sm font-medium hover:underline underline-offset-4' href='/login'>
-            Login
-          </Link>
-        </nav>
+      <header className='w-full border-b'>
+        <div className='container mx-auto px-4 md:px-6 max-w-7xl flex h-16 items-center justify-between'>
+          <div className='flex items-center gap-2 font-bold text-lg'>Fitness Tracker</div>
+          <nav className='ml-auto flex gap-4 sm:gap-6'>
+            <Button asChild size='sm' variant='outline' className='font-semibold'>
+              <Link href='/sign-in'>Sign In</Link>
+            </Button>
+            <Button asChild size='sm' className='font-semibold flex items-center gap-2'>
+              <Link href='/sign-up'>
+                Get Started
+                <ArrowRight className='h-5 w-5' />
+              </Link>
+            </Button>
+          </nav>
+        </div>
       </header>
       <main className='flex flex-col flex-grow'>
-        <section className='w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-white to-gray-400/85'>
+        <section className='w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-br from-primary-foreground to-secondary-foreground/35'>
           <div className='container mx-auto px-4 md:px-6 max-w-7xl'>
             <div className='grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]'>
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='space-y-2'>
-                  <h1 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none'>
+                  <h1 className='text-primary text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none'>
                     Manage Your Finances with Ease
                   </h1>
-                  <p className='text-gray-500 md:text-xl dark:text-gray-400'>
+                  <p className='text-primary/70 md:text-xl'>
                     Finance Tracker helps you track expenses, set budgets, and achieve your
                     financial goals. All for free.
                   </p>
                 </div>
                 <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                  <Button asChild size='lg' className='font-medium'>
+                  <Button asChild size='lg' className='font-semibold'>
                     <Link href='/sign-up'>Get Started</Link>
                   </Button>
                   <Button asChild variant='outline' size='lg'>
-                    <Link href='#features' className='font-medium'>
+                    <Link href='#features' className='font-semibold'>
                       Learn More
                     </Link>
                   </Button>
@@ -147,7 +149,7 @@ export default function Home() {
               <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
                 Trusted by Leading Banks
               </h2>
-              <p className='max-w-[600px] text-primary-foreground/80 md:text-xl'>
+              <p className='max-w-[600px] text-primary-foreground/70 md:text-xl'>
                 Connect your bank for automatic transaction uploads and seamless financial
                 management.
               </p>
@@ -176,11 +178,11 @@ export default function Home() {
         <section id='about' className='w-full py-12 md:py-24 lg:py-32'>
           <div className='container mx-auto px-4 md:px-6'>
             <div className='flex flex-col items-center space-y-4 text-center'>
-              <div className='space-y-4'>
-                <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
+              <div className='space-y-2'>
+                <h2 className='text-primary text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
                   About Finance Tracker
                 </h2>
-                <p className='max-w-3xl text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400'>
+                <p className='max-w-3xl text-primary/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Finance Tracker was created with a simple mission: to make personal finance
                   management accessible to everyone. We believe that understanding and controlling
                   your finances shouldn't be a luxury, but a fundamental right.
@@ -188,12 +190,12 @@ export default function Home() {
               </div>
               <div className='flex flex-row gap-4'>
                 <Button asChild size='default'>
-                  <Link href='/sign-up' className='font-medium py-2 px-6'>
+                  <Link href='/sign-up' className='font-semibold py-2 px-6'>
                     Get Started
                   </Link>
                 </Button>
                 <Button asChild variant='outline' size='default'>
-                  <Link href='/' className='font-medium py-2 px-6'>
+                  <Link href='/' className='font-semibold py-2 px-6'>
                     Learn More
                   </Link>
                 </Button>
