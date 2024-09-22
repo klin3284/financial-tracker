@@ -6,6 +6,7 @@ import { LineChart, PiggyBank, Wallet, Lock, Target, ArrowRight } from 'lucide-r
 import { Button } from '@components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { motion } from 'framer-motion';
+import ModeToggle from '@components/themeToggle';
 
 const cardVariants = {
   hidden: { scale: 0.8, opacity: 0 },
@@ -23,10 +24,11 @@ const cardVariants = {
 export default function Home() {
   return (
     <div className='flex min-h-screen flex-col'>
-      <header className='w-full border-b'>
+      <header className='w-full border-b bg-background text-primary'>
         <div className='container mx-auto px-4 md:px-6 max-w-7xl flex h-16 items-center justify-between'>
           <div className='flex items-center gap-2 font-bold text-lg'>Fitness Tracker</div>
           <nav className='ml-auto flex gap-4 sm:gap-6'>
+            <ModeToggle />
             <Button asChild size='sm' variant='outline' className='font-semibold'>
               <Link href='/sign-in'>Sign In</Link>
             </Button>
@@ -75,7 +77,9 @@ export default function Home() {
             </div>
           </div>{' '}
         </section>
-        <section id='features' className='w-full py-12 md:py-24 lg:py-32'>
+        <section
+          id='features'
+          className='w-full py-12 md:py-24 lg:py-32 bg-background text-primary'>
           <div className='container mx-auto px-4 md:px-6 max-w-5xl'>
             <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12'>
               Powerful Features to Manage Your Money
@@ -143,13 +147,13 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-        <section className='w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground'>
+        <section className='w-full py-12 md:py-24 lg:py-32 bg-secondary text-secondary-foreground'>
           <div className='container mx-auto px-4 md:px-6'>
             <div className='flex flex-col items-center space-y-4 text-center'>
               <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
                 Trusted by Leading Banks
               </h2>
-              <p className='max-w-[600px] text-primary-foreground/70 md:text-xl'>
+              <p className='max-w-[600px] text-secondary-foreground/70 md:text-xl'>
                 Connect your bank for automatic transaction uploads and seamless financial
                 management.
               </p>
@@ -175,7 +179,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id='about' className='w-full py-12 md:py-24 lg:py-32'>
+        <section id='about' className='w-full py-12 md:py-24 lg:py-32 bg-background text-primary'>
           <div className='container mx-auto px-4 md:px-6'>
             <div className='flex flex-col items-center space-y-4 text-center'>
               <div className='space-y-2'>
