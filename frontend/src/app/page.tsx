@@ -7,6 +7,7 @@ import { Button } from '@components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
 import { motion } from 'framer-motion';
 import ModeToggle from '@components/themeToggle';
+import Footer from '@components/layout/footer';
 
 const cardVariants = {
   hidden: { scale: 0.8, opacity: 0 },
@@ -47,7 +48,7 @@ export default function Home() {
             <div className='grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]'>
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='space-y-2'>
-                  <h1 className='text-primary text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none'>
+                  <h1 className='text-primary text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl/none'>
                     Manage Your Finances with Ease
                   </h1>
                   <p className='text-primary/70 md:text-xl'>
@@ -81,7 +82,7 @@ export default function Home() {
           id='features'
           className='w-full py-12 md:py-24 lg:py-32 bg-background text-primary'>
           <div className='container mx-auto px-4 md:px-6 max-w-5xl'>
-            <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12'>
+            <h2 className='text-3xl font-bold sm:text-4xl md:text-5xl text-center mb-12'>
               Powerful Features to Manage Your Money
             </h2>
             <motion.div
@@ -150,7 +151,7 @@ export default function Home() {
         <section className='w-full py-12 md:py-24 lg:py-32 bg-secondary text-secondary-foreground'>
           <div className='container mx-auto px-4 md:px-6'>
             <div className='flex flex-col items-center space-y-4 text-center'>
-              <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
+              <h2 className='text-3xl font-bold sm:text-4xl md:text-5xl'>
                 Trusted by Leading Banks
               </h2>
               <p className='max-w-[600px] text-secondary-foreground/70 md:text-xl'>
@@ -183,7 +184,7 @@ export default function Home() {
           <div className='container mx-auto px-4 md:px-6'>
             <div className='flex flex-col items-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <h2 className='text-primary text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
+                <h2 className='text-primary text-3xl font-bold sm:text-4xl md:text-5xl'>
                   About Finance Tracker
                 </h2>
                 <p className='max-w-3xl text-primary/70 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
@@ -208,6 +209,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 }
