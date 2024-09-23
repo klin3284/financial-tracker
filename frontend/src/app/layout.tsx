@@ -3,8 +3,8 @@ import React from 'react';
 import localFont from 'next/font/local';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
-import Footer from '@components/layout/footer';
 import { ThemeProvider } from '@components/theme-provider';
+import { Toaster } from '@components/ui/sonner';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -37,8 +37,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange>
             {children}
-            <Footer />
           </ThemeProvider>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>
