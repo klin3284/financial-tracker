@@ -4,7 +4,7 @@ import ExpenseCard from '@components/cards/expenseCard';
 import BudgetCard from '@components/cards/budgetCard';
 import SubscriptionCard from '@components/cards/subscriptionCard';
 import TransactionCard from '@components/cards/transactionCard';
-import { ExpenseBreakdownCard } from '@components/ui/pieChart';
+import { ExpenseBreakdownCard } from '@components/cards/pieChartBreakdownCard';
 import PeriodCard from '@components/cards/periodCard';
 
 export default function Dashboard() {
