@@ -20,17 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@components/ui/select';
-
-enum Tag {
-  Food = 'Food',
-  Transportation = 'Transportation',
-  Shopping = 'Shopping',
-  Entertainment = 'Entertainment',
-  Bills = 'Bills',
-  Health = 'Health',
-  Travel = 'Travel',
-  Other = 'Other',
-}
+import { Tag } from '@lib/types';
 
 const TAG_DATA: {
   tag: string;
@@ -280,3 +270,5 @@ export function ExpenseBreakdownCard() {
     </Card>
   );
 }
+
+export default ExpenseBreakdownCard;
