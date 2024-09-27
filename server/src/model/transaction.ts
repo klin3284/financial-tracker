@@ -1,4 +1,4 @@
-import { Tag, TransactionType } from '@prisma/client';
+import { Tag, Transaction, TransactionType } from '@prisma/client';
 
 export type CreateTransactionRequest = {
   amount: number;
@@ -24,4 +24,9 @@ export type UpdateTransactionRequest = {
     type?: TransactionType;
     tag?: Tag;
   };
+};
+
+export type PaginatedTransactionResponse = {
+  transactions: Transaction[];
+  totalCount: number;
 };

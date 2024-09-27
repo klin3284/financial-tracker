@@ -3,6 +3,7 @@ import TransactionDAO from '../dao/transactionDao';
 import UserDAO from '../dao/usersDao';
 import {
   CreateTransactionRequest,
+  PaginatedTransactionResponse,
   TransactionByDateRequest,
   UpdateTransactionRequest,
 } from '../model/transaction';
@@ -50,8 +51,12 @@ export default class TransactionService {
     return this._transactionDao.getTransactionById(id);
   }
 
-  public async getTransactionsByUser(userId: string): Promise<Transaction[]> {
-    return this._transactionDao.getTransactionsByUser(userId);
+  public async getTransactionsByUser(
+    userId: string,
+    page: number,
+    limit: number,
+  ): Promise<PaginatedTransactionResponse> {
+    return this._transactionDao.getTransactionsByUser(userId, page, limit);
   }
 
   public async getTransactionsByDateRange(req: TransactionByDateRequest): Promise<Transaction[]> {
