@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "format": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx "
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx ",
+    "client": "openapi --input ../shared/generated/swagger.json --output ./src/generated/client --client axios --name FinanceTracker"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.5.5",
@@ -21,6 +22,7 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-spring/web": "^9.7.4",
+    "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
@@ -51,6 +53,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "openapi-typescript-codegen": "^0.29.0",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.12",
