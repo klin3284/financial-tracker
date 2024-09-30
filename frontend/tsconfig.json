@@ -27,7 +27,8 @@
       "@components/*": ["./src/components/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@lib/*": ["./src/lib/*"],
-      "@generated/*": ["./generated/client/*"],
+      "@generated/*": ["./src/generated/client/*"],
+      "@context/*": ["./src/context/*"],
     }
   },
   "include": [

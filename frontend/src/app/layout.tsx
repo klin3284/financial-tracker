@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import React from 'react';
+import assert from 'assert';
 import localFont from 'next/font/local';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
-import { ThemeProvider } from '@components/theme-provider';
+import { ThemeProvider } from '@components/themeProvider';
 import { Toaster } from '@components/ui/sonner';
+import QueryProvider from '@components/queryProvider';
+import { TransactionsProvider } from '@context/transactionContext';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -27,20 +30,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  assert(process.env.NEXT_PUBLIC_SERVER_URL, 'NEXT_PUBLIC_SERVER_URL is required');
+
   return (
-    <ClerkProvider>
-      <html lang='en'>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ThemeProvider
-            attribute='class'
-            defaultTheme='system'
-            enableSystem
-            disableTransitionOnChange>
-            {children}
-          </ThemeProvider>
-          <Toaster />
-        </body>
-      </html>
-    </ClerkProvider>
+    <QueryProvider>
+      <ClerkProvider>
+        <TransactionsProvider>
+          <html lang='en'>
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+              <ThemeProvider
+                attribute='class'
+                defaultTheme='system'
+                enableSystem
+                disableTransitionOnChange>
+                {children}
+              </ThemeProvider>
+              <Toaster />
+            </body>
+          </html>
+        </TransactionsProvider>
+      </ClerkProvider>
+    </QueryProvider>
   );
 }
