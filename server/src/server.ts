@@ -28,7 +28,6 @@ BudgetService.initializeService(budgetDao, userDao);
 SubscriptionService.initializeService(subscriptionDao, userDao);
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -70,7 +69,7 @@ app.use('/docs', swaggerUi.serve, async (_req: express.Request, res: express.Res
 
 RegisterRoutes(app);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:8080`);
 });
