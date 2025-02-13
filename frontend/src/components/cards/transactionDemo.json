@@ -1,0 +1,92 @@
+[
+    {
+      "id": "1",
+      "userId": "user1",
+      "description": "Grocery shopping",
+      "tag": "FOOD",
+      "type": "EXPENSE",
+      "amount": 150.75,
+      "date": "2025-02-01T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "userId": "user1",
+      "description": "Monthly rent",
+      "tag": "HOUSING",
+      "type": "EXPENSE",
+      "amount": 1200.00,
+      "date": "2025-02-01T12:00:00Z"
+    },
+    {
+      "id": "3",
+      "userId": "user1",
+      "description": "Salary",
+      "tag": "INCOME",
+      "type": "INCOME",
+      "amount": 3000.00,
+      "date": "2025-02-01T14:00:00Z"
+    },
+    {
+      "id": "4",
+      "userId": "user1",
+      "description": "Electricity bill",
+      "tag": "UTILITIES",
+      "type": "EXPENSE",
+      "amount": 75.50,
+      "date": "2025-02-02T09:00:00Z"
+    },
+    {
+      "id": "5",
+      "userId": "user1",
+      "description": "Internet bill",
+      "tag": "UTILITIES",
+      "type": "EXPENSE",
+      "amount": 50.00,
+      "date": "2025-02-02T11:00:00Z"
+    },
+    {
+      "id": "6",
+      "userId": "user1",
+      "description": "Dinner at restaurant",
+      "tag": "FOOD",
+      "type": "EXPENSE",
+      "amount": 60.00,
+      "date": "2025-02-03T19:00:00Z"
+    },
+    {
+      "id": "7",
+      "userId": "user1",
+      "description": "Gym membership",
+      "tag": "HEALTH",
+      "type": "EXPENSE",
+      "amount": 45.00,
+      "date": "2025-02-04T08:00:00Z"
+    },
+    {
+      "id": "8",
+      "userId": "user1",
+      "description": "Movie tickets",
+      "tag": "ENTERTAINMENT",
+      "type": "EXPENSE",
+      "amount": 30.00,
+      "date": "2025-02-05T20:00:00Z"
+    },
+    {
+      "id": "9",
+      "userId": "user1",
+      "description": "Coffee with friends",
+      "tag": "FOOD",
+      "type": "EXPENSE",
+      "amount": 15.00,
+      "date": "2025-02-06T10:00:00Z"
+    },
+    {
+      "id": "10",
+      "userId": "user1",
+      "description": "Book purchase",
+      "tag": "EDUCATION",
+      "type": "EXPENSE",
+      "amount": 25.00,
+      "date": "2025-02-07T15:00:00Z"
+    }
+  ]

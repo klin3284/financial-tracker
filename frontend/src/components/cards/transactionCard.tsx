@@ -40,6 +40,9 @@ import { TagEnum, Tag } from '@generated/models/Tag';
 import { TransactionTypeEnum, TransactionType } from '@generated/models/TransactionType';
 import { Popover, PopoverTrigger, PopoverContent } from '@radix-ui/react-popover';
 import { format } from 'date-fns';
+import demoTransactions from './transactionDemo.json';
+
+const DEMO_MODE = true;
 
 interface TransactionCardProps {
   transactions: Transaction[];
@@ -192,7 +195,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({ transactions, createT
             </TableRow>
           </TableHeader>
           <TableBody>
-            {transactions.map(transaction => (
+            {(DEMO_MODE ? demoTransactions : transactions).map(transaction => (
               <TableRow key={transaction.id}>
                 <TableCell>
                   <div className='font-medium'>{transaction.description}</div>
