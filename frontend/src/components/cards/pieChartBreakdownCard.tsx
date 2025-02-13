@@ -113,7 +113,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ExpenseBreakdownCard() {
+function ExpenseBreakdownCard() {
   const [activeTag, setActiveTag] = React.useState(TAG_DATA[0].tag);
 
   const activeIndex = React.useMemo(

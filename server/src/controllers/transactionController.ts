@@ -1,7 +1,11 @@
 import { Route, Tags, Controller, Post, Body, Get, Path, Query } from 'tsoa';
 import { Tag, Transaction, TransactionType } from '@prisma/client';
 import TransactionService from '../services/transactionService';
-import { CreateTransactionRequest, UpdateTransactionRequest } from '../model/transaction';
+import {
+  CreateTransactionRequest,
+  PaginatedTransactionResponse,
+  UpdateTransactionRequest,
+} from '../model/transaction';
 
 @Route('transactions')
 @Tags('transactions')
@@ -21,8 +25,12 @@ export class TransactionController extends Controller {
   }
 
   @Get('by_user/{userId}')
-  public async getTransactionsByUser(@Path() userId: string): Promise<Transaction[]> {
-    const transactions = await this._transactionService.getTransactionsByUser(userId);
+  public async getTransactionsByUser(
+    @Path() userId: string,
+    @Query() page: number = 1,
+    @Query() limit: number = 20,
+  ): Promise<PaginatedTransactionResponse> {
+    const transactions = await this._transactionService.getTransactionsByUser(userId, page, limit);
     return transactions;
   }
 

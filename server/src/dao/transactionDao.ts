@@ -12,9 +12,22 @@ export default class TransactionDAO {
     return newTransaction;
   }
 
-  public async getTransactionsByUser(userId: string): Promise<Transaction[]> {
-    const transactions = await prisma.transaction.findMany({ where: { userId } });
-    return transactions;
+  public async getTransactionsByUser(
+    userId: string,
+    page: number,
+    limit: number,
+  ): Promise<{ transactions: Transaction[]; totalCount: number }> {
+    const skip = (page - 1) * limit;
+    const [transactions, totalCount] = await prisma.$transaction([
+      prisma.transaction.findMany({
+        where: { userId },
+        skip,
+        take: limit,
+        orderBy: { date: 'desc' },
+      }),
+      prisma.transaction.count({ where: { userId } }),
+    ]);
+    return { transactions, totalCount };
   }
 
   public async getTransactionById(id: string): Promise<Transaction | null> {
